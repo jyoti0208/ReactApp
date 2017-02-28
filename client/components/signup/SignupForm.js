@@ -23,7 +23,8 @@ class SignupForm extends React.Component {
   }
   onSubmit(e){
     e.preventDefault();
-    
+    axios.post('/api/users', {user: this.state});
+
   }
   render() {
     const options = map(timezones, (val, key) =>
