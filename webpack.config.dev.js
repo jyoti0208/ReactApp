@@ -15,7 +15,7 @@ export default {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
   module: {
      loaders: [
        {
