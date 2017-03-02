@@ -13,7 +13,7 @@ export default  function validateInput(data) {
   if(isNull(data.email) || isEmpty(data.email)){
     errors.email = 'Email empty';
   }
-  if(isEmail(data.email) || isEmpty(data.email)){
+  if(!isEmail(data.email) || isEmpty(data.email)){
     errors.email = 'Email incorrect';
   }
   if(isNull(data.password) || isEmpty(data.password)){
