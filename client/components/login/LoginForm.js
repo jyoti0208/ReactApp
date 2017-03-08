@@ -22,6 +22,9 @@ class LoginForm extends React.Component {
 
   isValid() {
     const { errors, isValid } = validateInput(this.state);
+    console.log("val..."+ errors);
+    console.log("val2..."+ isValid);
+
     if(!isValid)
       this.setState({ errors });
     return isValid;
@@ -33,14 +36,15 @@ class LoginForm extends React.Component {
       this.setState({errors: {}, isLoading: true });
       this.props.login(this.state).then(
         (res) => this.context.router.push('/'),
-        (err) => this.setState({errors: err.response.data.errors, isLoading: false})
+        (err) => this.setState({errors: err.data.errors, isLoading: false})
       );
 
     }
   }
 
   render() {
-    const { errors, isLoading } = this.state;
+    const { errors, identifier, password,  isLoading } = this.state;
+    console.log("...." +identifier );
     return (
       <form onSubmit={this.onSubmit}>
         <h1> Login</h1>
@@ -49,16 +53,16 @@ class LoginForm extends React.Component {
         <TextFieldGroup
           field="identifier"
           label="Username /Email"
-          value={this.state.identifier}
-          error={errors.identifier}
+          value={identifier}
+          //error={errors.identifier}
           onChange={this.onChange}
           />
 
         <TextFieldGroup
           field="password"
           label="Password"
-          value={this.state.password}
-          error={errors.password}
+          value={password}
+         // error={errors.password}
           onChange={this.onChange}
           type="password"
         />
@@ -72,10 +76,11 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes={
-  login: {login}
+  login: React.PropTypes.func.isRequired
 }
 LoginForm.contextTypes={
   router: React.PropTypes.object.isRequired
 }
 
-export default connect(null, { login })(LoginForm);
+//export default connect(null, { login })(LoginForm);
+export default LoginForm;
