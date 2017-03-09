@@ -63,7 +63,7 @@ class SignupForm extends React.Component {
         <h1>Join our community!</h1>
 
         <TextFieldGroup
-          error={errors.username}
+         // error={errors.username}
           label="Username"
           onChange={this.onChange}
           value={this.state.username}
